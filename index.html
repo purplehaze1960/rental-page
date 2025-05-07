@@ -1,44 +1,117 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Аренда квартир</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apartment Rental</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f0f0f8;
+      color: #333;
+      margin: 0;
       padding: 20px;
     }
-    .apartment {
-      border: 1px solid #ccc;
-      padding: 15px;
+    header {
+      text-align: center;
+    }
+    .language-switcher {
+      text-align: right;
       margin-bottom: 20px;
     }
-    img {
-      max-width: 100%;
-      height: auto;
+    .language-switcher button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
     }
-    h2 {
-      margin-top: 0;
+    .apartment {
+      background: white;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .apartment img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+    .price {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="language-switcher">
+    <button onclick="setLanguage('cz')">🇨🇿 CZ</button>
+    <button onclick="setLanguage('en')">🇬🇧 EN</button>
+    <button onclick="setLanguage('ru')">🇷🇺 RU</button>
+  </div>
 
-  <h1>Аренда квартир</h1>
+  <header>
+    <h1 id="title">Apartment Rentals</h1>
+    <p id="desc">Check out our available apartments</p>
+  </header>
 
   <div class="apartment">
-    <h2>1-комнатная квартира</h2>
-    <p>Цена: 35 000 ₽/мес</p>
-    <img src="photo1.jpg" alt="Фото 1к квартиры">
-    <p>Телефон: <a href="tel:+79998887766">+7 (999) 888-77-66</a></p>
+    <img src="https://source.unsplash.com/600x400/?apartment,living" alt="1-bedroom apartment"/>
+    <h2 id="apt1-title">1-room Apartment</h2>
+    <p class="price" id="apt1-price">Price: 18,000 CZK / month</p>
   </div>
 
   <div class="apartment">
-    <h2>2-комнатная квартира</h2>
-    <p>Цена: 50 000 ₽/мес</p>
-    <img src="photo2.jpg" alt="Фото 2к квартиры">
-    <p>Телефон: <a href="tel:+79998887766">+7 (999) 888-77-66</a></p>
+    <img src="https://source.unsplash.com/600x400/?apartment,interior" alt="2-bedroom apartment"/>
+    <h2 id="apt2-title">2-room Apartment</h2>
+    <p class="price" id="apt2-price">Price: 26,000 CZK / month</p>
   </div>
 
+  <footer>
+    <p id="contact">📞 Contact: +420 777 123 456</p>
+  </footer>
+
+  <script>
+    const translations = {
+      cz: {
+        title: "Pronájem bytů",
+        desc: "Prohlédněte si dostupné byty",
+        apt1Title: "1-pokojový byt",
+        apt1Price: "Cena: 18 000 Kč / měsíc",
+        apt2Title: "2-pokojový byt",
+        apt2Price: "Cena: 26 000 Kč / měsíc",
+        contact: "📞 Kontakt: +420 777 123 456"
+      },
+      en: {
+        title: "Apartment Rentals",
+        desc: "Check out our available apartments",
+        apt1Title: "1-room Apartment",
+        apt1Price: "Price: 18,000 CZK / month",
+        apt2Title: "2-room Apartment",
+        apt2Price: "Price: 26,000 CZK / month",
+        contact: "📞 Contact: +420 777 123 456"
+      },
+      ru: {
+        title: "Аренда квартир",
+        desc: "Посмотрите доступные варианты квартир",
+        apt1Title: "1-комнатная квартира",
+        apt1Price: "Цена: 18 000 крон / месяц",
+        apt2Title: "2-комнатная квартира",
+        apt2Price: "Цена: 26 000 крон / месяц",
+        contact: "📞 Телефон: +420 777 123 456"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('desc').textContent = t.desc;
+      document.getElementById('apt1-title').textContent = t.apt1Title;
+      document.getElementById('apt1-price').textContent = t.apt1Price;
+      document.getElementById('apt2-title').textContent = t.apt2Title;
+      document.getElementById('apt2-price').textContent = t.apt2Price;
+      document.getElementById('contact').textContent = t.contact;
+    }
+  </script>
 </body>
 </html>
+
